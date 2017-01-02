@@ -64,14 +64,4 @@
         <property name="leg" ref="sonyLeg"/>
     </bean>
 
-    <bean id="sonyHead" class="impl.parts.sony.SonyHead"/>
-    <bean id="sonyHand" class="impl.parts.sony.SonyHand"/>
-    <bean id="sonyLeg" class="impl.parts.sony.SonyLeg"/>
-
-    <bean id="toshibaHead" class="impl.parts.toshiba.ToshibaHead"/>
-    <bean id="toshibaHand" class="impl.parts.toshiba.ToshibaHand"/>
-    <bean id="toshibaLeg" class="impl.parts.toshiba.ToshibaLeg"/>
-
-    <bean class="spring.MyBeanPostprocessor"/>
-
 </beans>
