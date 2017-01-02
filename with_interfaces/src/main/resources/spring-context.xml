@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:c="http://www.springframework.org/schema/c"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!-- properties setting via p: will be last-->
     <bean id="t1000" class="impl.robots.ModelT1000">
         <!--will be injected at the first step-->
         <!--
@@ -10,11 +12,34 @@
         <constructor-arg ref="sonyHand"/>
         <constructor-arg ref="sonyLeg"/>
         -->
-        
+
+        <!--we also can provide values for properties
+        index and type are optional
+        in case of implicit index, we still have to specify properties using matching order
+        -->
+        <constructor-arg value="true" index="2" type="boolean"/>
+        <constructor-arg value="2017" index="1" type="int"/>
+        <constructor-arg value="Black" index="0" type="java.lang.String"/>
+
         <!--will be injected after constructor args-->
-        <property name="head" ref="toshibaHead"/>
-        <property name="hand" ref="toshibaHand"/>
-        <property name="leg" ref="toshibaLeg"/>
+        <property name="head" ref="sonyHead"/>
+        <property name="hand" ref="sonyHand"/>
+        <property name="leg" ref="sonyLeg"/>
+    </bean>
+
+    <bean id="t1000Brief" class="impl.robots.ModelT1000"
+          c:year="2142"
+          c:color="Silver"
+          c:isSoundEnabled="true"
+          p:head-ref="toshibaHead"
+          p:hand-ref="toshibaHand"
+          p:leg-ref="toshibaLeg"
+    />
+
+    <bean id="t1000Empty" class="impl.robots.ModelT1000">
+        <property name="head" ref="sonyHead"/>
+        <property name="hand" ref="sonyHand"/>
+        <property name="leg" ref="sonyLeg"/>
     </bean>
 
     <bean id="sonyHead" class="impl.parts.sony.SonyHead"/>

@@ -10,6 +10,10 @@ public class ModelT1000 implements AbstractRobot {
     private Hand hand;
     private Leg leg;
 
+    private String color;
+    private int year;
+    private boolean isSoundEnabled;
+
     public ModelT1000() {
     }
 
@@ -20,7 +24,20 @@ public class ModelT1000 implements AbstractRobot {
         this.leg = leg;
     }
 
+    public ModelT1000(Head head, Hand hand, Leg leg, String color, int year, boolean isSoundEnabled) {
+        this.head = head;
+        this.hand = hand;
+        this.leg = leg;
+        this.color = color;
+        this.year = year;
+        this.isSoundEnabled = isSoundEnabled;
+    }
 
+    public ModelT1000(String color, int year, boolean isSoundEnabled) {
+        this.color = color;
+        this.year = year;
+        this.isSoundEnabled = isSoundEnabled;
+    }
 
     @Override
     public void action() {
@@ -33,6 +50,7 @@ public class ModelT1000 implements AbstractRobot {
     @Override
     public void dance() {
         System.out.println("T1000 is dancing right now!");
+        System.out.println("color is "+color+" year is "+year+" and sound is "+(isSoundEnabled?"enabled!":"disabled!"));
     }
 
     public Head getHead() {
@@ -57,5 +75,29 @@ public class ModelT1000 implements AbstractRobot {
 
     public void setLeg(Leg leg) {
         this.leg = leg;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public boolean isSoundEnabled() {
+        return isSoundEnabled;
+    }
+
+    public void setSoundEnabled(boolean soundEnabled) {
+        isSoundEnabled = soundEnabled;
     }
 }
