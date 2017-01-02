@@ -1,6 +1,6 @@
-package spring.objects;// Created by Neginskiy Gregoriy.
+package impl.parts.toshiba;// Created by Neginskiy Gregoriy.
 
-import spring.interfaces.Hand;
+import interfaces.parts.Hand;
 
 public class ToshibaHand implements Hand {
     public void catchSomething() {

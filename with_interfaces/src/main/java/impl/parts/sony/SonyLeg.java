@@ -1,6 +1,6 @@
-package spring.objects;// Created by Neginskiy Gregoriy.
+package impl.parts.sony;// Created by Neginskiy Gregoriy.
 
-import spring.interfaces.Leg;
+import interfaces.parts.Leg;
 
 public class SonyLeg implements Leg {
     public void go() {

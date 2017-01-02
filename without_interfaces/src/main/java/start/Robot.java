@@ -1,8 +1,8 @@
-package spring.start;// Created by Neginskiy Gregoriy.
+package start;// Created by Neginskiy Gregoriy.
 
-import spring.objects.SonyHand;
-import spring.objects.SonyHead;
-import spring.objects.SonyLeg;
+import impl.SonyHand;
+import impl.SonyHead;
+import impl.SonyLeg;
 
 public class Robot{
     private SonyHead head = new SonyHead();

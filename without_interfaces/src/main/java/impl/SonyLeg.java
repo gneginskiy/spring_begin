@@ -1,4 +1,4 @@
-package spring.objects;// Created by Neginskiy Gregoriy.
+package impl;// Created by Neginskiy Gregoriy.
 
 public class SonyLeg {
     public void go() {

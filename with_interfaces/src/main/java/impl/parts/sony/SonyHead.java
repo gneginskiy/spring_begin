@@ -1,6 +1,6 @@
-package spring.objects;// Created by Neginskiy Gregoriy.
+package impl.parts.sony;// Created by Neginskiy Gregoriy.
 
-import spring.interfaces.Head;
+import interfaces.parts.Head;
 
 public class SonyHead implements Head {
     public void calc() {

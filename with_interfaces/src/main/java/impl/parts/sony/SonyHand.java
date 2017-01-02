@@ -1,6 +1,6 @@
-package spring.objects;// Created by Neginskiy Gregoriy.
+package impl.parts.sony;// Created by Neginskiy Gregoriy.
 
-import spring.interfaces.Hand;
+import interfaces.parts.Hand;
 
 public class SonyHand implements Hand {
     public void catchSomething() {
