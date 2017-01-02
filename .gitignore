@@ -1,5 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
 out
 lib
-spring_begin.iml
+*.iml
 .idea
