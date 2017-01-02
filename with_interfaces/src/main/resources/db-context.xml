@@ -10,12 +10,6 @@
        default-destroy-method="destroy"
        >
     <!-- so we can include other xml files to our main context-->
-    <import resource="parts_context/sony-context.xml"/>
-    <import resource="parts_context/toshiba-context.xml"/>
-    <import resource="robots_context/t1000-context.xml"/>
-    <import resource="db-context.xml"/>
-
-
-    <bean class="spring.MyBeanPostprocessor"/>
+    <bean name="databaseAcessor" class="db.DatabaseAcessor"/>
 
 </beans>
