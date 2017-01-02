@@ -4,9 +4,17 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="t1000" class="impl.robots.ModelT1000">
+        <!--will be injected at the first step-->
+        <!--
         <constructor-arg ref="sonyHead"/>
-        <constructor-arg ref="toshibaHand"/>
+        <constructor-arg ref="sonyHand"/>
         <constructor-arg ref="sonyLeg"/>
+        -->
+        
+        <!--will be injected after constructor args-->
+        <property name="head" ref="toshibaHead"/>
+        <property name="hand" ref="toshibaHand"/>
+        <property name="leg" ref="toshibaLeg"/>
     </bean>
 
     <bean id="sonyHead" class="impl.parts.sony.SonyHead"/>

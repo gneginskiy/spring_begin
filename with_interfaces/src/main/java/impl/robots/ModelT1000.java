@@ -34,4 +34,28 @@ public class ModelT1000 implements AbstractRobot {
     public void dance() {
         System.out.println("T1000 is dancing right now!");
     }
+
+    public Head getHead() {
+        return head;
+    }
+
+    public void setHead(Head head) {
+        this.head = head;
+    }
+
+    public Hand getHand() {
+        return hand;
+    }
+
+    public void setHand(Hand hand) {
+        this.hand = hand;
+    }
+
+    public Leg getLeg() {
+        return leg;
+    }
+
+    public void setLeg(Leg leg) {
+        this.leg = leg;
+    }
 }
