@@ -9,7 +9,7 @@ public class Start {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
         ModelT1000 t1000 = context.getBean(ModelT1000.class);
         sleep(2);
-        //t1000.action();
+        t1000.action();
         t1000.dance();
     }
 

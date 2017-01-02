@@ -2,7 +2,20 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
     <bean id="t1000" class="impl.robots.ModelT1000">
-        
+        <constructor-arg ref="sonyHead"/>
+        <constructor-arg ref="toshibaHand"/>
+        <constructor-arg ref="sonyLeg"/>
     </bean>
+
+    <bean id="sonyHead" class="impl.parts.sony.SonyHead"/>
+    <bean id="sonyHand" class="impl.parts.sony.SonyHand"/>
+    <bean id="sonyLeg" class="impl.parts.sony.SonyLeg"/>
+
+    <bean id="toshibaHead" class="impl.parts.toshiba.ToshibaHead"/>
+    <bean id="toshibaHand" class="impl.parts.toshiba.ToshibaHand"/>
+    <bean id="toshibaLeg" class="impl.parts.toshiba.ToshibaLeg"/>
+
+
 </beans>
