@@ -4,8 +4,10 @@ import interfaces.AbstractRobot;
 import interfaces.parts.Hand;
 import interfaces.parts.Head;
 import interfaces.parts.Leg;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
 
-public class ModelT1000 implements AbstractRobot {
+public class ModelT1000 implements AbstractRobot, DisposableBean,InitializingBean{
     private Head head;
     private Hand hand;
     private Leg leg;
@@ -99,5 +101,14 @@ public class ModelT1000 implements AbstractRobot {
 
     public void setSoundEnabled(boolean soundEnabled) {
         isSoundEnabled = soundEnabled;
+    }
+
+    public void destroy() {
+        System.out.println(getClass().getSimpleName()+" is being destroyed "+this);
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println(getClass().getSimpleName()+" is being created "+this);
     }
 }

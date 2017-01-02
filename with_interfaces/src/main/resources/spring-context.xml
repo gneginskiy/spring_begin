@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p" xmlns:c="http://www.springframework.org/schema/c"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-lazy-init="true"
+       default-init-method="init"
+       default-destroy-method="destroy"
+       >
 
-    <!-- properties setting via p: will be last-->
+
     <bean id="t1000" class="impl.robots.ModelT1000">
+        <!--prototype scope provides multiple instances each time you call getBean()
+            opposite, singleton (default) scope creates only one instance and then returns you this instance
+        -->
+
         <!--will be injected at the first step-->
         <!--
         <constructor-arg ref="sonyHead"/>
@@ -27,6 +37,18 @@
         <property name="leg" ref="sonyLeg"/>
     </bean>
 
+    <bean id="t1000PreAndPost" class="impl.robots.ModelT1000"
+          scope="singleton"
+          destroy-method="destroy"
+          c:year="2142"
+          c:color="Silver"
+          c:isSoundEnabled="true"
+          p:head-ref="toshibaHead"
+          p:hand-ref="toshibaHand"
+          p:leg-ref="toshibaLeg"
+    />
+
+    <!-- properties setting via p: will be last-->
     <bean id="t1000Brief" class="impl.robots.ModelT1000"
           c:year="2142"
           c:color="Silver"
@@ -50,5 +72,6 @@
     <bean id="toshibaHand" class="impl.parts.toshiba.ToshibaHand"/>
     <bean id="toshibaLeg" class="impl.parts.toshiba.ToshibaLeg"/>
 
+    <bean class="spring.MyBeanPostprocessor"/>
 
 </beans>
