@@ -1,25 +1,19 @@
 package impl.robots;// Created by Neginskiy Gregoriy.
 
+import interfaces.AbstractRobot;
 import interfaces.parts.Hand;
 import interfaces.parts.Head;
 import interfaces.parts.Leg;
-import interfaces.AbstractRobot;
 
-public class SimpleRobot implements AbstractRobot {
-    private Head head;
-    private Leg leg;
-    private Hand hand;
-
-    public SimpleRobot(Head head, Leg leg, Hand hand) {
-        this.head = head;
-        this.leg = leg;
-        this.hand = hand;
+public class SimpleRobot extends AbstractRobot {
+    public SimpleRobot(Head head, Hand hand, Leg leg) {
+        super(head, hand, leg);
     }
 
     public void action(){
-        head.calc();
-        hand.catchSomething();
-        leg.go();
+        getHead().calc();
+        getHand().catchSomething();
+        getLeg().go();
 
     }
 

@@ -7,11 +7,7 @@ import interfaces.parts.Leg;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
-public class ModelT1000 implements AbstractRobot, DisposableBean,InitializingBean{
-    private Head head;
-    private Hand hand;
-    private Leg leg;
-
+public class ModelT1000 extends AbstractRobot implements DisposableBean,InitializingBean{
     private String color;
     private int year;
     private boolean isSoundEnabled;
@@ -20,16 +16,11 @@ public class ModelT1000 implements AbstractRobot, DisposableBean,InitializingBea
     }
 
     public ModelT1000(Head head, Hand hand, Leg leg) {
-        super();
-        this.head = head;
-        this.hand = hand;
-        this.leg = leg;
+        super(head,hand,leg);
     }
 
     public ModelT1000(Head head, Hand hand, Leg leg, String color, int year, boolean isSoundEnabled) {
-        this.head = head;
-        this.hand = hand;
-        this.leg = leg;
+        super(head,hand,leg);
         this.color = color;
         this.year = year;
         this.isSoundEnabled = isSoundEnabled;
@@ -43,9 +34,9 @@ public class ModelT1000 implements AbstractRobot, DisposableBean,InitializingBea
 
     @Override
     public void action() {
-        head.calc();
-        hand.catchSomething();
-        leg.go();
+        getHead().calc();
+        getHand().catchSomething();
+        getLeg().go();
         System.out.println("T1000 will destroy everything!");
     }
 
@@ -55,29 +46,6 @@ public class ModelT1000 implements AbstractRobot, DisposableBean,InitializingBea
         System.out.println("color is "+color+" year is "+year+" and sound is "+(isSoundEnabled?"enabled!":"disabled!"));
     }
 
-    public Head getHead() {
-        return head;
-    }
-
-    public void setHead(Head head) {
-        this.head = head;
-    }
-
-    public Hand getHand() {
-        return hand;
-    }
-
-    public void setHand(Hand hand) {
-        this.hand = hand;
-    }
-
-    public Leg getLeg() {
-        return leg;
-    }
-
-    public void setLeg(Leg leg) {
-        this.leg = leg;
-    }
 
     public String getColor() {
         return color;

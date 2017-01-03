@@ -7,6 +7,6 @@ import impl.robots.SimpleRobot;
 
 public class RobotManager {
     public static void main(String[] args) {
-        new SimpleRobot(new SonyHead(),new SonyLeg(),new ToshibaHand()).action();
+        new SimpleRobot(new SonyHead(),new ToshibaHand(),new SonyLeg()).action();
     }
 }

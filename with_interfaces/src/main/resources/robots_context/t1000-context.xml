@@ -5,65 +5,30 @@
        xmlns:c="http://www.springframework.org/schema/c"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd"
-       default-lazy-init="true"
        default-init-method="init"
+       default-lazy-init="true"
        default-destroy-method="destroy"
        >
 
 
-    <bean id="t1000" class="impl.robots.ModelT1000" depends-on="databaseAcessor">
-        <!--prototype scope provides multiple instances each time you call getBean()
-            opposite, singleton (default) scope creates only one instance and then returns you this instance
-        -->
-
-        <!--will be injected at the first step-->
+    <bean id="t1000" class="impl.robots.ModelT1000" depends-on="databaseAcessor" parent="abstractRobot"
+          c:color="Silver"
+          c:isSoundEnabled="true"
+          c:year="2143"
+    >
         <!--
-        <constructor-arg ref="sonyHead"/>
-        <constructor-arg ref="sonyHand"/>
+        samples:
         <constructor-arg ref="sonyLeg"/>
-        -->
-
-        <!--we also can provide values for properties
-        index and type are optional
-        in case of implicit index, we still have to specify properties using matching order
-        -->
-        <constructor-arg value="true" index="2" type="boolean"/>
-        <constructor-arg value="2017" index="1" type="int"/>
-        <constructor-arg value="Black" index="0" type="java.lang.String"/>
-
-        <!--will be injected after constructor args-->
         <property name="head" ref="sonyHead"/>
-        <property name="hand" ref="sonyHand"/>
-        <property name="leg" ref="sonyLeg"/>
+        -->
     </bean>
 
-    <bean id="t1000PreAndPost" class="impl.robots.ModelT1000"
-          depends-on="databaseAcessor"
-          scope="singleton"
-          destroy-method="destroy"
-          c:year="2142"
-          c:color="Silver"
-          c:isSoundEnabled="true"
-          p:head-ref="toshibaHead"
-          p:hand-ref="toshibaHand"
-          p:leg-ref="toshibaLeg"
-    />
-
-    <!-- properties setting via p: will be last-->
-    <bean id="t1000Brief" class="impl.robots.ModelT1000"
-          depends-on="databaseAcessor"
-          c:year="2142"
-          c:color="Silver"
-          c:isSoundEnabled="true"
-          p:head-ref="toshibaHead"
-          p:hand-ref="toshibaHand"
-          p:leg-ref="toshibaLeg"
-    />
-
-    <bean id="t1000Empty" class="impl.robots.ModelT1000" depends-on="databaseAcessor">
-        <property name="head" ref="sonyHead"/>
-        <property name="hand" ref="sonyHand"/>
-        <property name="leg" ref="sonyLeg"/>
+    <bean id="abstractRobot" abstract="true"
+          c:head-ref="toshibaHead"
+          c:hand-ref="toshibaHand"
+          c:leg-ref="toshibaLeg">
     </bean>
+
+
 
 </beans>
