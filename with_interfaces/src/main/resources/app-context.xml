@@ -15,6 +15,12 @@
     <import resource="robots_context/t1000-context.xml"/>
     <import resource="db-context.xml"/>
 
+    <bean id = "t1000Conveyor" class = "impl.conveyors.T1000Conveyor">
+        <lookup-method name="createRobot" bean="t1000"/>
+        <replaced-method name="createRobotUsingReplacedMethod" replacer="sampleReplacer" />
+    </bean>
+
+    <bean class="impl.conveyors.replacers.SampleReplacer" name="sampleReplacer"/>
 
     <bean class="spring.MyBeanPostprocessor"/>
 

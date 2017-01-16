@@ -12,6 +12,7 @@
 
 
     <bean id="t1000" class="impl.robots.ModelT1000" depends-on="databaseAcessor" parent="abstractRobot"
+          scope="prototype"
           c:color="Silver"
           c:isSoundEnabled="true"
           c:year="2143"
