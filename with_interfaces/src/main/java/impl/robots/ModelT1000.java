@@ -37,7 +37,7 @@ public class ModelT1000 extends AbstractRobot implements DisposableBean,Initiali
         getHead().calc();
         getHand().catchSomething();
         getLeg().go();
-        System.out.println("T1000 will destroy everything!");
+        System.out.println("T1000 "+this+" will destroy everything!");
     }
 
     @Override

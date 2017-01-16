@@ -13,6 +13,8 @@
     <import resource="parts_context/sony-context.xml"/>
     <import resource="parts_context/toshiba-context.xml"/>
     <import resource="robots_context/t1000-context.xml"/>
+    <import resource="pools_context/t1000pool-context.xml"/>
+
     <import resource="db-context.xml"/>
 
     <bean id = "t1000Conveyor" class = "impl.conveyors.T1000Conveyor">
