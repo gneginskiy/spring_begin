@@ -9,8 +9,8 @@
        default-init-method="init"
        default-destroy-method="destroy"
 >
-    <import resource="aop-context.xml"/>
 
+    <aop:aspectj-autoproxy />
 
 
     <context:annotation-config/>

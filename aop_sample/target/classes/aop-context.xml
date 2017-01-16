@@ -10,14 +10,14 @@
        default-destroy-method="destroy"
 >
 
-    <aop:config xmlns:aop="http://www.springframework.org/schema/aop">
-        <aop:aspect id="log" ref="sampleLogger">
-            <aop:pointcut id="getValue" expression="execution(* aop.SampleService.*(..))"/>
-            <aop:around pointcut-ref="getValue" method="watchTime"/>
-            <aop:before pointcut-ref="getValue" method="init"/>
-            <aop:after pointcut-ref="getValue" method="close"/>
-            <aop:after-throwing pointcut-ref="getValue" method="handle"/>
-            <aop:after-returning pointcut-ref="getValue" returning="obj" method="printValue"/>
-        </aop:aspect>
-    </aop:config>
+    <!--<aop:config xmlns:aop="http://www.springframework.org/schema/aop">-->
+        <!--<aop:aspect id="log" ref="sampleLogger">-->
+            <!--<aop:pointcut id="getValue" expression="execution(* aop.SampleService.*(..))"/>-->
+            <!--<aop:around pointcut-ref="getValue" method="watchTime"/>-->
+            <!--<aop:before pointcut-ref="getValue" method="init"/>-->
+            <!--<aop:after pointcut-ref="getValue" method="close"/>-->
+            <!--<aop:after-throwing pointcut-ref="getValue" method="handle"/>-->
+            <!--<aop:after-returning pointcut-ref="getValue" returning="obj" method="printValue"/>-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
 </beans>
