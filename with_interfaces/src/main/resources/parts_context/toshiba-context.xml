@@ -8,11 +8,10 @@
        default-lazy-init="true"
        default-init-method="init"
        default-destroy-method="destroy"
-       default-autowire-candidates="false"
        >
 
-    <bean id="toshibaHead" class="impl.parts.toshiba.ToshibaHead"/>
-    <bean id="toshibaHand" class="impl.parts.toshiba.ToshibaHand"/>
-    <bean id="toshibaLeg" class="impl.parts.toshiba.ToshibaLeg"/>
+    <bean id="toshibaHead" class="impl.parts.toshiba.ToshibaHead" autowire-candidate="true"/>
+    <bean id="toshibaHand" class="impl.parts.toshiba.ToshibaHand" autowire-candidate="true"/>
+    <bean id="toshibaLeg" class="impl.parts.toshiba.ToshibaLeg" autowire-candidate="true"/>
 
 </beans>

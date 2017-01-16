@@ -3,6 +3,8 @@ package interfaces;// Created by Neginskiy Gregoriy.
 import interfaces.parts.Hand;
 import interfaces.parts.Head;
 import interfaces.parts.Leg;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 public class AbstractRobot implements IRobot {
     public AbstractRobot(Head head, Hand hand, Leg leg) {
@@ -11,8 +13,16 @@ public class AbstractRobot implements IRobot {
         this.leg = leg;
     }
 
+    @Autowired(required = true)
+    @Qualifier("sonyHead")
     private Head head;
+
+    @Autowired(required = true)
+    @Qualifier("toshibaHand")
     private Hand hand;
+
+    @Autowired(required = true)
+    @Qualifier("toshibaLeg")
     private Leg leg;
 
     public AbstractRobot() {

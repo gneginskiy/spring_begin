@@ -5,7 +5,6 @@
        xmlns:c="http://www.springframework.org/schema/c"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd"
-       default-lazy-init="true"
        default-init-method="init"
        default-destroy-method="destroy"
        >

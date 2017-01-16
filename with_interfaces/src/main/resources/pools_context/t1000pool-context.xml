@@ -14,10 +14,8 @@
             <property name="robotCollection">
                 <list>
                     <ref bean="t1000"/>
-                     <bean class="impl.robots.ModelT1000" parent="abstractRobot" scope="prototype"
-                           c:color="gold"
-                           c:isSoundEnabled="true"
-                           c:year="2143"/>
+                    <ref bean="t1000"/>
+
                 </list>
             </property>
         </bean>

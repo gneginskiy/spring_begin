@@ -6,12 +6,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd"
        default-init-method="init"
-       default-lazy-init="true"
        default-destroy-method="destroy"
        >
 
 
-    <bean id="t1000" class="impl.robots.ModelT1000" depends-on="databaseAcessor"   autowire="byType"
+    <bean id="t1000" class="impl.robots.ModelT1000" depends-on="databaseAcessor"
           scope="prototype"
           c:color="Silver"
           c:isSoundEnabled="true"
