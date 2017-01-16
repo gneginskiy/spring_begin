@@ -14,7 +14,7 @@ public class SampleLogger {
         System.out.println(obj);
     }
 
-    @Pointcut("execution(* *(..))")
+    @Pointcut("execution(* aop.IPointCut.*(..))")
     private void allMethods() {
     };
 
