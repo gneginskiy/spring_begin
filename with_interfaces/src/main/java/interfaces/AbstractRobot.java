@@ -6,6 +6,9 @@ import interfaces.parts.Leg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 public class AbstractRobot implements IRobot {
     public AbstractRobot(Head head, Hand hand, Leg leg) {
         this.head = head;
@@ -13,15 +16,15 @@ public class AbstractRobot implements IRobot {
         this.leg = leg;
     }
 
-    @Autowired(required = true)
-    @Qualifier("sonyHead")
+    @Inject
+    @Named("sonyHead")
     private Head head;
 
-    @Autowired(required = true)
-    @Qualifier("toshibaHand")
+    @Inject
+    @Qualifier("toshibaHand") //lol. it's also possible.
     private Hand hand;
 
-    @Autowired(required = true)
+    @Autowired
     @Qualifier("toshibaLeg")
     private Leg leg;
 
