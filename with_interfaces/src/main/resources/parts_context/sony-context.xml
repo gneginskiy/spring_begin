@@ -10,9 +10,9 @@
        default-destroy-method="destroy"
        >
 
-    <bean id="sonyHead" class="impl.parts.sony.SonyHead"/>
-    <bean id="sonyHand" class="impl.parts.sony.SonyHand"/>
-    <bean id="sonyLeg" class="impl.parts.sony.SonyLeg"/>
+    <bean id="sonyHead" class="impl.parts.sony.SonyHead" autowire-candidate="true"/>
+    <bean id="sonyHand" class="impl.parts.sony.SonyHand" autowire-candidate="true"/>
+    <bean id="sonyLeg" class="impl.parts.sony.SonyLeg" autowire-candidate="true"/>
 
 
 </beans>

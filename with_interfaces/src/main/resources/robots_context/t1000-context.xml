@@ -11,7 +11,7 @@
        >
 
 
-    <bean id="t1000" class="impl.robots.ModelT1000" depends-on="databaseAcessor" parent="abstractRobot"
+    <bean id="t1000" class="impl.robots.ModelT1000" depends-on="databaseAcessor"   autowire="byType"
           scope="prototype"
           c:color="Silver"
           c:isSoundEnabled="true"
@@ -24,11 +24,13 @@
         -->
     </bean>
 
-    <bean id="abstractRobot" abstract="true"
-          c:head-ref="toshibaHead"
-          c:hand-ref="toshibaHand"
-          c:leg-ref="toshibaLeg">
-    </bean>
+    <bean id="abstractRobot" abstract="true"/>
+
+    <!--<bean id="abstractRobot" abstract="true"-->
+          <!--c:head-ref="toshibaHead"-->
+          <!--c:hand-ref="toshibaHand"-->
+          <!--c:leg-ref="toshibaLeg">-->
+    <!--</bean>-->
 
 
 

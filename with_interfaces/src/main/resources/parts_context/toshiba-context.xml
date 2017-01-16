@@ -8,6 +8,7 @@
        default-lazy-init="true"
        default-init-method="init"
        default-destroy-method="destroy"
+       default-autowire-candidates="false"
        >
 
     <bean id="toshibaHead" class="impl.parts.toshiba.ToshibaHead"/>
