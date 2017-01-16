@@ -11,6 +11,14 @@ public class SampleService {
         return 123;
     }
 
+    public void processEverything(){
+        System.out.println("processing everything");
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+        }
+    }
+
     public double getDoubleValue(){
         return 456.789;
     }

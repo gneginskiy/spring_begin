@@ -1,5 +1,6 @@
 package aop;
 
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,6 +15,12 @@ public class SampleLogger {
 
     public void handle(){
         System.out.println("SOMETHING WENT WRONG! Interceptor noticed it.");
+    }
+
+    public void watchTime(ProceedingJoinPoint pjp) throws Throwable {
+        System.out.println(System.currentTimeMillis());
+        pjp.proceed();
+        System.out.println(System.currentTimeMillis());
     }
 
 
