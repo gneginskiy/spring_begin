@@ -11,6 +11,7 @@
     <modules>
         <module>untitled</module>
         <module>impl2</module>
+        <module>aop_sample</module>
     </modules>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/cglib/cglib -->
@@ -30,6 +31,12 @@
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>
             <version>1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-aspects -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>4.3.5.RELEASE</version>
         </dependency>
 
 
