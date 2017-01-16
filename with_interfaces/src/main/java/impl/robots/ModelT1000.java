@@ -6,7 +6,9 @@ import interfaces.parts.Head;
 import interfaces.parts.Leg;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ModelT1000 extends AbstractRobot implements DisposableBean,InitializingBean{
     private String color;
     private int year;

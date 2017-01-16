@@ -13,9 +13,8 @@
         <bean id="t1000Pool"  class="impl.pools.T1000Pool">
             <property name="robotCollection">
                 <list>
-                    <ref bean="t1000"/>
-                    <ref bean="t1000"/>
-
+                    <ref bean="modelT1000"/>
+                    <ref bean="modelT1000"/>
                 </list>
             </property>
         </bean>

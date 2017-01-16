@@ -10,7 +10,7 @@
 >
 
     <context:annotation-config/>
-
+    <context:component-scan base-package="impl"/>
     <!-- so we can include other xml files to our main context-->
     <import resource="parts_context/sony-context.xml"/>
     <import resource="parts_context/toshiba-context.xml"/>
