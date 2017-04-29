@@ -3,3 +3,6 @@ out
 lib
 *.iml
 .idea
+/aop_sample/target/
+/target/
+/without_interfaces/target/
