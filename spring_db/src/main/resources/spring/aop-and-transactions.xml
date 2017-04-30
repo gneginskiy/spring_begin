@@ -8,10 +8,9 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
 >
 
-    <import resource="aop-and-transactions.xml"/>
-
     <context:annotation-config/>
-    <context:component-scan base-package="dao"/>
+    <context:component-scan base-package="aop"/>
+
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.sqlite.JDBC"/>
         <!--<property name="url" value="jdbc:sqlite:db/SpringDB.db"/>-->
@@ -19,4 +18,31 @@
         <property name="username" value=""/>
         <property name="password" value=""/>
     </bean>
+
+
+    <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
+
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <tx:advice id="adviceTransaction" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="insert*" propagation="REQUIRED" read-only="false" isolation="SERIALIZABLE"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:advisor
+                pointcut="execution(* dao.impls.*.*(..))" advice-ref="adviceTransaction"/>
+    </aop:config>
+
+
+    <aop:config>
+        <aop:aspect id="aspectCheckTransaction" ref="transactionActiveCheck">
+            <aop:pointcut expression="execution(* dao.impls.*.insert*(..))" id="insertPointcut"/>
+            <aop:before pointcut-ref="insertPointcut" method="printTransactionStatus" />
+        </aop:aspect>
+    </aop:config>
 </beans>
