@@ -4,6 +4,7 @@ import dao.interfaces.MP3Dao;
 import entity.Mp3;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.UncategorizedDataAccessException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
@@ -11,6 +12,8 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -41,6 +44,7 @@ public class SqliteMp3Dao implements MP3Dao {
 
 
     @Override
+    @Transactional
     public void insert(Mp3 mp3) {
         //assuming that the author doesn't exist already
         KeyHolder authorKeyHolder = authorSimpleJdbcInsert.executeAndReturnKeyHolder(new HashMap<String, Object>() {{
