@@ -49,7 +49,7 @@ public class SqliteMp3Dao implements MP3Dao {
 
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.SERIALIZABLE)
+    //@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.SERIALIZABLE)
     public void insert(Mp3 mp3) {
         printTransactionStatus();
         //assuming that the author doesn't exist already
