@@ -13,11 +13,15 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.*;
+
+import static misc.MiscUtils.printTransactionStatus;
 
 /**
  * Created by Greg on 30.04.2017.
@@ -44,8 +48,9 @@ public class SqliteMp3Dao implements MP3Dao {
 
 
     @Override
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRED)
     public void insert(Mp3 mp3) {
+        printTransactionStatus();
         //assuming that the author doesn't exist already
         KeyHolder authorKeyHolder = authorSimpleJdbcInsert.executeAndReturnKeyHolder(new HashMap<String, Object>() {{
             put("name", mp3.getAuthor());
@@ -57,6 +62,7 @@ public class SqliteMp3Dao implements MP3Dao {
             put("author_id", authorKeyHolder.getKey());
         }});
     }
+
 
     public void insert(Collection<Mp3> mp3Collection) {
         mp3Collection.forEach(this::insert);
