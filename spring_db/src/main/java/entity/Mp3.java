@@ -1,11 +1,16 @@
-package dao.interfaces;
+package entity;
 
 /**
- * Created by user on 30.04.2017.
+ * Created by Greg on 30.04.2017.
  */
 public class Mp3 {
     private String name;
     private String author;
+
+    public Mp3(String author, String name) {
+        setName(name);
+        setAuthor(author);
+    }
 
     public String getName() {
         return name;

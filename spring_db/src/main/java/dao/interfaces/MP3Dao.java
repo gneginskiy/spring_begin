@@ -1,5 +1,7 @@
 package dao.interfaces;
 
+import entity.Mp3;
+
 import java.util.List;
 
 /**
