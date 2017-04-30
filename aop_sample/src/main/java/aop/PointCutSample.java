@@ -37,4 +37,11 @@ public class PointCutSample implements IPointCut {
         Map<String, String> map = new HashMap<>();
         return "sampleStringIsHere!";
     }
+
+    @Override
+    public void doSmthWithReceivedStrValue(String value) {
+        System.out.println(
+                "DOING SOMETHING EXTREMELY USEFUL WITH RECEIVED STRING VALUE! For instance, we're gonna print it! "
+                        +value);
+    }
 }

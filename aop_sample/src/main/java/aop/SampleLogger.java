@@ -42,6 +42,17 @@ public class SampleLogger {
         return null;
     }
 
+    @Around("allMethods() && execution(void *(java.lang.String))&& args(stringValue)")
+    public Object interceptStringParamValue(ProceedingJoinPoint joinPoint, String stringValue) throws Throwable {
+        System.out.println("AOP Apect invocation is starting : "+System.currentTimeMillis());
+        System.out.println("\nProceeding with |"+ joinPoint.getSignature()+"|\n");
+        System.out.println("gonna substitute method parameter in advice with another one!");
+        joinPoint.proceed(new Object[]{"SUBSTITUTED SHITTY PARAMETER. WHAT A LAME"});
+        MiscUtils.printArgs(joinPoint);
+        System.out.println("AOP Apect invocation is finishing : "+System.currentTimeMillis());
+        return null;
+    }
+
     @SuppressWarnings("rawtypes")
     @AfterReturning(pointcut = "execution(java.util.HashMap *(..))", returning = "map")
     public void printReturnedMap(JoinPoint jp, Object map){

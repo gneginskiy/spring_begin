@@ -8,6 +8,7 @@ public class StartAop {
         IPointCut iPointCutImplementation = (IPointCut) context.getBean("pointCutSample");
         //iPointCutImplementation.doSomething();
         iPointCutImplementation.doSmthWithMap();
+        iPointCutImplementation.doSmthWithReceivedStrValue("received string value!");
 
         //iPointCutImplementation.doSmthWithString();
 

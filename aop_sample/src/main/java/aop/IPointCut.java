@@ -12,4 +12,6 @@ public interface IPointCut {
     Set doSmthWithSet();
 
     String doSmthWithString();
+
+    void doSmthWithReceivedStrValue(String value);
 }
