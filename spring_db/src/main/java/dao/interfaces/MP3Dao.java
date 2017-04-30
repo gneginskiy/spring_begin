@@ -17,6 +17,10 @@ public interface MP3Dao {
 
     void batchInsert(Collection<Mp3> mp3Collection);
 
+    void  update(Collection<Mp3> mp3);
+
+    void  update(Mp3 mp3);
+
     void delete(Mp3 mp3);
 
     Mp3 getMp3ById(int id);

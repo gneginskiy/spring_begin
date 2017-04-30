@@ -14,6 +14,11 @@ public class Mp3 {
         setId(id);
     }
 
+    public Mp3(String author, String name) {
+        setName(name);
+        setAuthor(author);
+    }
+
     public int getId() {
         return id;
     }
@@ -22,10 +27,6 @@ public class Mp3 {
         this.id = id;
     }
 
-    public Mp3(String author, String name) {
-        setName(name);
-        setAuthor(author);
-    }
 
     public String getName() {
         return name;

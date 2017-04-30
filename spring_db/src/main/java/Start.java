@@ -18,12 +18,13 @@ public class Start {
         sqliteMp3Dao.insertWithJdbc(new Mp3("Ранетки", "Мы - ранетки!"));
         System.out.println();
         ArrayList<Mp3> mp3s = new ArrayList<Mp3>() {{
-            add(new Mp3("artist1", "track1"));
-            add(new Mp3("artist2", "track2"));
-            add(new Mp3("artist3", "track3"));
-            add(new Mp3("artist4", "track4"));
-            add(new Mp3("artist5", "track5"));
+            add(new Mp3("artist11", "trackUpdddaaated11111",21));
+            add(new Mp3("artist22", "trackUpdddaaated22222",22));
+            add(new Mp3("artist33", "trackUpdddaaated33333",23));
+            add(new Mp3("artist44", "trackUpdddaaated44444",24));
+            add(new Mp3("artist55", "trackUpdddaaated55555",25));
         }};
         sqliteMp3Dao.delete(new Mp3("Ранетки","Мы - ранетки!"));
+        sqliteMp3Dao.update(mp3s);
     }
 }
