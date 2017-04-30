@@ -6,14 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.sql.*;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Created by Greg on 30.04.2017.
@@ -22,15 +21,33 @@ import java.util.TreeMap;
 public class SqliteMp3Dao implements MP3Dao {
 
     private JdbcTemplate jdbcTemplate;
+    private SimpleJdbcInsert mp3SimpleJdbcInsert;
+    private DataSource dataSource;
 
     @Autowired
     public void setDataSource(DataSource dataSource){
         this.jdbcTemplate = new JdbcTemplate(dataSource);
+        this.dataSource = dataSource;
+        this.mp3SimpleJdbcInsert = new SimpleJdbcInsert(dataSource).withTableName("MP3")
+                                                                   .usingColumns("NAME", "AUTHOR");
     }
 
+    @Override
     public void insert(Mp3 mp3) {
+        mp3SimpleJdbcInsert.execute(new HashMap<String, String>() {{
+            put("name", mp3.getName());
+            put("author", mp3.getAuthor());
+        }});
+    }
+
+    public void insertWithQuery(Mp3 mp3) {
         String sqlQuery = "insert into mp3 (name, author) VALUES (?,?)";
         jdbcTemplate.update(sqlQuery, mp3.getName(), mp3.getAuthor());
+    }
+
+
+    public void  batchInsert(Collection<Mp3> mp3Collection) {
+        mp3SimpleJdbcInsert.executeBatch(SqlParameterSourceUtils.createBatch(mp3Collection.toArray()));
     }
 
     public void insert(Collection<Mp3> mp3Collection) {
