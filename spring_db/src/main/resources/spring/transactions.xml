@@ -7,16 +7,20 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
 >
-    <import resource="aop.xml"/>
-    <import resource="transactions.xml"/>
-
     <context:annotation-config/>
-    <context:component-scan base-package="dao"/>
+    <context:component-scan base-package="aop"/>
+
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.sqlite.JDBC"/>
-        <!--<property name="url" value="jdbc:sqlite:db/SpringDB.db"/>-->
         <property name="url" value="jdbc:sqlite:spring_core_tutorial/spring_db/src/main/resources/db/db.db"/>
         <property name="username" value=""/>
         <property name="password" value=""/>
+    </bean>
+
+    <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
+
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
     </bean>
 </beans>
