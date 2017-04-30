@@ -6,6 +6,21 @@ package entity;
 public class Mp3 {
     private String name;
     private String author;
+    private int id;
+
+    public Mp3(String author, String name, int id) {
+        setName(name);
+        setAuthor(author);
+        setId(id);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Mp3(String author, String name) {
         setName(name);
