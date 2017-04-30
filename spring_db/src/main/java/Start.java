@@ -14,5 +14,6 @@ public class Start {
         sqliteMp3Dao.insert(mp3);
         sqliteMp3Dao.insertWithJdbc(new Mp3("Ранетки", "Мы - ранетки!"));
         System.out.println();
+        sqliteMp3Dao.delete(new Mp3("Ранетки","Мы - ранетки!"));
     }
 }

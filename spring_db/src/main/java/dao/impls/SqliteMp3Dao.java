@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -31,6 +32,10 @@ public class SqliteMp3Dao implements MP3Dao {
         jdbcTemplate.update(sqlQuery, mp3.getName(), mp3.getAuthor());
     }
 
+    public void insert(Collection<Mp3> mp3Collection) {
+        mp3Collection.forEach(this::insert);
+    }
+
     public void insertWithJdbc(Mp3 mp3){
         Connection conn = null;
 
@@ -38,9 +43,7 @@ public class SqliteMp3Dao implements MP3Dao {
             Class.forName("org.sqlite.JDBC");
             String url = "jdbc:sqlite:spring_core_tutorial/spring_db/src/main/resources/db/db.db";
             conn= DriverManager.getConnection(url,"","");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
         String sqlQuery = "insert into mp3 (name, author) VALUES (?,?)";
@@ -67,8 +70,11 @@ public class SqliteMp3Dao implements MP3Dao {
 
 
     public void delete(Mp3 mp3) {
+        String sqlQuery = "delete from mp3 where name=? and author=?";
+        jdbcTemplate.update(sqlQuery, mp3.getName(), mp3.getAuthor());
 
     }
+
 
     public void getMp3ById(int id) {
 

@@ -2,6 +2,7 @@ package dao.interfaces;
 
 import entity.Mp3;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -10,6 +11,8 @@ import java.util.List;
 public interface MP3Dao {
 
     void insert(Mp3 mp3);
+
+    void insert(Collection<Mp3> mp3Collection);
 
     void delete(Mp3 mp3);
 

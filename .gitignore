@@ -6,3 +6,4 @@ lib
 /aop_sample/target/
 /target/
 /without_interfaces/target/
+/spring_db/target/
